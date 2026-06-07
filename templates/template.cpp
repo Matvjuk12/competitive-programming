@@ -1,0 +1,24 @@
+#include <bits/stdc++.h> 
+
+using namespace std;
+
+using ll = long long;
+using vi = vector<int>;
+using vll = vector<ll>;
+using pii = pair<int, int>;
+
+void solve() {    
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    // cin >> t; // Раскомментировать, если в задаче несколько тест-кейсов
+    while (t--) {
+        solve();
+    }
+
+    return 0;
+}
