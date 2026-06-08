@@ -7,11 +7,13 @@ using vi = vector<int>;
 using vll = vector<ll>;
 using pii = pair<int, int>;
 template <typename T>
-using pq = priority_queue<T>
+using pq = priority_queue<T>;
 template <typename T>
-using q = queue<T>
+using q = queue<T>;
 template <typename T>
-using v = vector<T>
+using v = vector<T>;
+template <typename T>
+using us = unordered_set<T>;
 
 void solve() {    
 }
