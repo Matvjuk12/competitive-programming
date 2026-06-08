@@ -14,6 +14,8 @@ template <typename T>
 using v = vector<T>;
 template <typename T>
 using us = unordered_set<T>;
+template <typename T1, typename T2>
+using ump = unordered_map<T1, T2>;
 
 void solve() {    
 }
