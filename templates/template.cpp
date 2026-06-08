@@ -6,6 +6,12 @@ using ll = long long;
 using vi = vector<int>;
 using vll = vector<ll>;
 using pii = pair<int, int>;
+template <typename T>
+using pq = priority_queue<T>
+template <typename T>
+using q = queue<T>
+template <typename T>
+using v = vector<T>
 
 void solve() {    
 }
