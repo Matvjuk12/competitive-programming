@@ -30,4 +30,5 @@ int main(){
         cout << x.first << "->" << x.second << "\n";
     }
 
+    return 0;
 }

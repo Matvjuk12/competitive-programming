@@ -11,6 +11,8 @@ using pq = priority_queue<T>;
 template <typename T>
 using q = queue<T>;
 template <typename T>
+using dq = deque<T>;
+template <typename T>
 using v = vector<T>;
 template <typename T>
 using us = unordered_set<T>;
