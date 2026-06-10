@@ -4,10 +4,11 @@ using namespace std;
 
 using ll = long long;
 using vi = vector<int>;
+using vll = vector<ll>;
 
-vi findDiffsArray(const vi& a){
+vll findDiffsArray(const vll& a){
     int n = a.size();
-    vi d(n+1, 0);
+    vll d(n+1, 0);
 
     d[0] = a[0];
 
@@ -17,9 +18,9 @@ vi findDiffsArray(const vi& a){
     return d;
 }
 
-vi findArray(const vi& d){
+vll findArray(const vll& d){
     int n = d.size() - 1;
-    vi a(n, 0);
+    vll a(n, 0);
 
     a[0] = d[0];
     for (int i = 1; i < n; i++){
@@ -29,8 +30,6 @@ vi findArray(const vi& d){
     return a;
 }
 
-vi D;
-
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -38,12 +37,12 @@ int main(){
     int n, q;
     cin >> n;
 
-    vi a(n); 
+    vll a(n); 
     for(int i = 0; i < n; i++){
         cin >> a[i];
     }
 
-    D = findDiffsArray(a);
+    vll D = findDiffsArray(a);
 
     cin >> q;
     int l, r, d;
