@@ -28,10 +28,3 @@ vector<vll> findPrefixSums2D(const vector<vi>& a){
     }
     return b;
 }
-
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    return 0;
-}
