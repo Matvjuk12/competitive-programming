@@ -61,7 +61,7 @@ const ll INF64 = 1e18;
 template <typename T>
 void print(T a, string sep = "\n")
 {
-    cout << setprecision(20) << a << sep;
+    cout << a << sep;
 }
 template <typename T, typename T2>
 void print(pair<T, T2> a, string sep = " ")
@@ -89,19 +89,36 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-
-void solve() {    
+bool good(int k, const str& p, const str& t, const vi& f, int n){
+    int j = 0;
+    FOR(i, 0, n){
+        if(f[i] >= k && t[i] == p[j]) j++;
+        if(j == p.size()) return true;
+    }
+    return false;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    int t = 1;
-    // cin >> t; // Раскомментировать, если в задаче несколько тест-кейсов
-    while (t--) {
-        solve();
+    str t, p;
+    cin >> t >> p;
+    int n = t.size();
+    vi a(n);
+    vi f(n);
+    FOR(i, 0, n){
+        cin >> a[i];
+        f[a[i] - 1] = i;
     }
+
+    int l = 0, r = n;
+
+    while(r > l + 1){
+        int k = (l + r) / 2;
+        if(good(k, p, t, f, n)) l = k;
+        else r = k;
+    }
+
+    print(l);
 
     return 0;
 }
