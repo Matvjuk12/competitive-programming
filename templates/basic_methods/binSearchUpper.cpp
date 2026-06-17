@@ -88,17 +88,17 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-int find_lower(const vi& a, int x){ // max i : a[i] <= x
+int find_upper(const vi& a, int x){ // min i : a[i] >= x
     int l = -1;
     int r = (int)a.size();
 
     while(r > l + 1){
         int m = (r + l) / 2; // m > l, m < r
-        if (a[m] <= x) l = m;
+        if (a[m] < x) l = m;
         else r = m;
     }
 
-    return l;
+    return r;
 }
 
 
@@ -115,7 +115,7 @@ int main() {
     while (k--) {
         int x;
         cin >> x;
-        print(find_lower(a, x) + 1);
+        print(find_upper(a, x) + 1);
     }
 
     return 0;
