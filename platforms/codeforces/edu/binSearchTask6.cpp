@@ -89,27 +89,35 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-bool good(ll m, ll n, ll k, const vll& a){
-    ll s = 0;
-    FOR(i, 0, n){
-        s += min(a[i], m);
-    }
-    return s >= m * k;
+bool good(ll k, int mb, int ms, int mc, int nb, int ns, int nc, int pb, int ps, int pc, ll o){
+    ll kb = max(0LL, k * mb - nb);
+    ll ks = max(0LL, k * ms - ns);
+    ll kc = max(0LL, k * mc - nc);
+    
+    ll s = kb * pb + ks * ps + kc * pc;
+    return o >= s;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
-    ll k, n;
-    cin >> k >> n;
-    vll a(n);
-    FOR(i, 0, n) cin >> a[i];
-
-    ll l = 0, r = 1e11;
+    cin.tie(NULL);
+    str s;
+    cin >> s;
+    int mb = count(all(s), 'B');
+    int ms = count(all(s), 'S');
+    int mc = sz(s) - mb - ms; 
+    int nb, ns, nc;
+    cin >> nb >> ns >> nc;
+    int pb, ps, pc;
+    cin >> pb >> ps >> pc;
+    ll o;
+    cin >> o;
+    ll l = 0, r = 1e13;
 
     while(r > l + 1){
-        ll m = (l + r) / 2;
-        if(good(m, n, k, a)) l = m;
-        else r = m;
+        ll k = (l + r) / 2;
+        if(good(k, mb, ms, mc, nb, ns, nc, pb, ps, pc, o)) l = k;
+        else r = k;
     }
 
     print(l);
