@@ -88,16 +88,22 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-bool find(const vi& a, int x){
-    int l = 0;
-    int r = (int)a.size() - 1;
-    while(r >= l){
-        int m = (r + l) / 2;
-        if(a[m] == x) return true;
-        if(a[m] < x) l = m + 1;
-        if(a[m] > x) r = m - 1;
+int find_lower(const vi& a, int x){ // max i : a[i] <= x
+    int l = -1;
+    int r = (int)a.size();
+
+    while(r > l + 1){
+        int m = (r + l) / 2; // m > l, m < r
+        if (a[m] <= x) l = m;
+        else r = m;
     }
-    return false;
+
+    return l;
+}
+
+bool find(const vi& a, int x){
+    int i = find_lower(a, x);
+    return i >= 0 && a[i] == x;
 }
 
 int main() {
