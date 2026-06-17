@@ -88,19 +88,29 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-
-void solve() {    
-}
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t = 1;
-    // cin >> t; // Раскомментировать, если в задаче несколько тест-кейсов
-    while (t--) {
-        solve();
+    int  n, k;
+    cin >> n >> k;
+    vi a(n);
+    FOR(i, 0, n) cin >> a[i];
+
+    ld l = 0;
+    ld r = 1e8;
+
+    FOR(i, 0, 100){
+        ld m = (l + r) * .5;
+        int s = 0;
+        FOR(i, 0, n){
+            s += (int)(a[i] / m);
+        }
+        if(s >= k) l = m;
+        else r = m;
     }
+
+    print(l);
 
     return 0;
 }

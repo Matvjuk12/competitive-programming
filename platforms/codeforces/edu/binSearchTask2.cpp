@@ -60,7 +60,7 @@ const ll INF64 = 1e18;
 template <typename T>
 void print(T a, string sep = "\n")
 {
-    cout << setprecision(20) << a << sep;
+    cout << a << sep;
 }
 template <typename T, typename T2>
 void print(pair<T, T2> a, string sep = " ")
@@ -88,17 +88,28 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
+vi a;
 
 void solve() {    
+    int l, r;
+    cin >> l >> r;
+    int r1 = lower_bound(a.begin(), a.end(), l) - a.begin();
+    int r2 = upper_bound(a.begin(), a.end(), r) - a.begin();
+    print(r2 - r1);
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    int n;
+    cin >> n;
+    a.rsz(n);
+    FOR(i, 0, n) cin >> a[i];
+    sort(a.begin(), a.end());
 
-    int t = 1;
-    // cin >> t; // Раскомментировать, если в задаче несколько тест-кейсов
-    while (t--) {
+    int k = 1;
+    cin >> k; // Раскомментировать, если в задаче несколько тест-кейсов
+    while (k--) {
         solve();
     }
 
