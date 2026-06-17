@@ -88,30 +88,27 @@ void print(T a[], int aSize, string sep = " ")
     cout << "\n";
 }
 
-vi a;
-
-void solve() {    
-    int l, r;
-    cin >> l >> r;
-    int r1 = lower_bound(a.begin(), a.end(), l) - a.begin();
-    int r2 = upper_bound(a.begin(), a.end(), r) - a.begin();
-    print(r2 - r1);
+bool good(ll n, ll x, ll y, ll m){
+    if(m < min(x, y)) return false;
+    return 1 + (m-min(x,y))/x + (m-min(x,y))/y >= n;
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int n;
-    cin >> n;
-    a.rsz(n);
-    FOR(i, 0, n) cin >> a[i];
-    sort(a.begin(), a.end());
+    ll n, x, y;
+    cin >> n >> x >> y;
 
-    int k = 1;
-    cin >> k; // Раскомментировать, если в задаче несколько тест-кейсов
-    while (k--) {
-        solve();
+    ll l = 0;
+    ll r = (n + 1) * max(x, y);
+
+    while(r > l + 1){
+        ll m = (l + r) / 2;
+        if(good(n, x, y, m)) r = m;
+        else l = m;
     }
+
+    print(r);
 
     return 0;
 }
