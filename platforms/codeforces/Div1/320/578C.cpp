@@ -42,8 +42,8 @@ using namespace __gnu_pbds;
 using ll = long long;
 using ld = long double;
 using vi = vector<int>;
-using vd = vector<ld>;
 using vll = vector<ll>;
+using vd = vector<ld>;
 using vvi = vector<vector<int>>;
 using vvvi = vector<vector<vector<int>>>;
 using vvll = vector<vector<ll>>;
@@ -91,18 +91,44 @@ void print(T a[], int aSize, string sep = " ")
 }
 
 
-void solve() {    
+ld f(ld x, const vd& a, int n){
+    ld fv = a[0] - x;
+    ld cmax = fv, imax = fv;
+    ld cmin = fv, imin = fv;
+
+    FOR(i, 1, n){
+        ld v =a[i] - x;
+
+        cmax = max(v, cmax + v);
+        imax = max(cmax, imax);
+
+        cmin = min(v, cmin + v);
+        imin = min(cmin, imin);
+    }
+
+    return max(abs(imax), abs(imin));
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    int n;
+    cin >> n;
 
-    int t = 1;
-    // cin >> t; // Раскомментировать, если в задаче несколько тест-кейсов
-    while (t--) {
-        solve();
+    vd a(n);
+    FOR(i, 0, n) cin >> a[i];
+
+    auto [min_it, max_it] = std::minmax_element(a.begin(), a.end());
+
+    ld l = -2e4, r = 2e4;
+
+    FOR(i, 0, 150){
+        ld m1 = l + (r-l)/3, m2 = r - (r-l)/3;
+        if(f(m1, a, n)<f(m2, a, n)) r = m2;
+        else l = m1;
     }
+
+    print(f(l, a, n));
 
     return 0;
 }
